@@ -25,5 +25,14 @@
    
    </select>
    
+   <update id="update" parameterType="kr.co.vo.BoardVO">
+   	  
+   	  update mp_board set title=#{title}, content=#{content} where bno = #{bno}
+   		
+   </update>
+   
+   <delete id="delete" parameterType="int">
+   		delete from mp_board where bno = #{bno}
+   </delete>
    
 </mapper>

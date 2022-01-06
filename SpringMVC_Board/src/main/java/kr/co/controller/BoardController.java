@@ -49,4 +49,28 @@ public class BoardController {
 		return "board/readView";
 	}
 	
+	@GetMapping("updateView")
+	public String updateView(BoardVO boardVO, Model model) throws Exception{
+		
+		model.addAttribute("update" , service.read(boardVO.getBno()));
+		
+		return "board/updateView";
+	}
+	
+	@PostMapping("update")
+	public String update(BoardVO boardVO) throws Exception{
+		
+		service.update(boardVO);
+		
+		return "redirect:/board/list";
+	}
+	
+	@PostMapping("delete")
+	public String delete(BoardVO boardVO)throws Exception{
+		
+		service.delete(boardVO.getBno());
+		
+		return "redirect:/board/list";
+	}
+	
 }

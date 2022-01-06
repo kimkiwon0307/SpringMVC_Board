@@ -16,20 +16,28 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void write(BoardVO boardVO) throws Exception {
-
 		dao.write(boardVO);
 	}
 
 	@Override
 	public List<BoardVO> list() throws Exception {
-		// TODO Auto-generated method stub
 		return dao.list();
 	}
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.read(bno);
+	}
+
+	@Override
+	public void update(BoardVO boardVO) throws Exception {
+		dao.update(boardVO);
+		
+	}
+
+	@Override
+	public void delete(int bno) throws Exception {
+		dao.delete(bno);
 	}
 	
 	
