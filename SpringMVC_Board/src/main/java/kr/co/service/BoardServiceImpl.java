@@ -25,6 +25,12 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return dao.list();
 	}
+
+	@Override
+	public BoardVO read(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.read(bno);
+	}
 	
 	
 	

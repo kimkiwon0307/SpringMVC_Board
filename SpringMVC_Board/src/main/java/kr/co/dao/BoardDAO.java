@@ -9,7 +9,10 @@ public interface BoardDAO {
 	//입력
 	public void write(BoardVO boardVO) throws Exception;
 	
-	//조회
+	//목록
 	public List<BoardVO> list() throws Exception;
+	
+	//조회
+	public BoardVO read(int bno) throws Exception;
 	
 }

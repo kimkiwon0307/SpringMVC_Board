@@ -19,5 +19,11 @@
    
    </select>
    
+   <select id="read" resultType="kr.co.vo.BoardVO" parameterType="int" >
+   		
+   		select * from mp_board where bno = #{bno} 
+   
+   </select>
+   
    
 </mapper>

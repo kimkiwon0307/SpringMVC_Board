@@ -30,4 +30,12 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSesssion.selectList("boardMapper.list");
 	}
 
+
+
+	@Override
+	public BoardVO read(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSesssion.selectOne("boardMapper.read",bno);
+	}
+
 }
