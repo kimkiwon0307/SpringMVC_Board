@@ -27,8 +27,9 @@
 		})
 		
 		function fn_valiChk(){
-			var updateForm = $("form[name='updateForm'].chk").length;
-			for(var i = 0; i < updateForm; i++){
+			
+			
+			for(var i = 0; i < 2; i++){
 				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
 					alert($(".chk").eq(i).attr("title"));
 					return true;
