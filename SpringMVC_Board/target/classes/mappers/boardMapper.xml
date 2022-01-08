@@ -17,7 +17,22 @@
    	
    	select * from mp_board order by bno desc
    
+   </select> 
+   
+    <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.Criteria">
+   		
+   		select * from (
+   				
+   				select bno, title, content, writer, regdate, row_number() over(order by bno desc) as rnum
+   				from mp_board )MP
+   		
+   		where rnum between #{rowStart} and #{rowEnd} order by bno desc
+   		
+   		)
    </select>
+    
+   
+   
    
    <select id="read" resultType="kr.co.vo.BoardVO" parameterType="int" >
    		
