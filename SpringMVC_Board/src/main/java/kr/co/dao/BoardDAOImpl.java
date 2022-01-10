@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.vo.BoardVO;
+import kr.co.vo.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -24,14 +25,23 @@ public class BoardDAOImpl implements BoardDAO{
 
 
 
+//	@Override
+//	public List<BoardVO> list() throws Exception {
+//		// TODO Auto-generated method stub
+//		return sqlSesssion.selectList("boardMapper.list");
+//	}
+//
+
+
 	@Override
-	public List<BoardVO> list() throws Exception {
+	public List<BoardVO> list(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSesssion.selectList("boardMapper.list");
+		return sqlSesssion.selectList("boardMapper.list", cri);
 	}
 
 
-
+	
+	
 	@Override
 	public BoardVO read(int bno) throws Exception {
 		// TODO Auto-generated method stub
@@ -53,6 +63,14 @@ public class BoardDAOImpl implements BoardDAO{
 	public void delete(int bno) throws Exception {
 
 		sqlSesssion.delete("boardMapper.delete", bno);
+	}
+
+
+
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSesssion.selectOne("boardMapper.listCount");
 	}
 
 }

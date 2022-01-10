@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.service.BoardService;
 import kr.co.vo.BoardVO;
+import kr.co.vo.Criteria;
+import kr.co.vo.PageMaker;
 
 @Controller
 @RequestMapping("/board/*")
@@ -32,14 +34,28 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
+//	@GetMapping("list")
+//	public String list(Model model) throws Exception{
+//		
+//		model.addAttribute("list", service.list());
+//		
+//		
+//		return "board/list";
+//	}
+	
 	@GetMapping("list")
-	public String list(Model model) throws Exception{
+	public String list(Model model , Criteria cri) throws Exception{
 		
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", service.list(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listCount());
 		
+		model.addAttribute("pageMaker",pageMaker);
 		
 		return "board/list";
 	}
+	
 	
 	@GetMapping("readView")
 	public String read(BoardVO boardVO, Model model)throws Exception {
