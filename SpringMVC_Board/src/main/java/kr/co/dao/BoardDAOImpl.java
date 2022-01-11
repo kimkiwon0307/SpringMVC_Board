@@ -36,7 +36,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<BoardVO> list(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSesssion.selectList("boardMapper.list", cri);
+		return sqlSesssion.selectList("boardMapper.listPage", cri);
 	}
 
 
