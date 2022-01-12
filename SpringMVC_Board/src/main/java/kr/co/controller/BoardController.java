@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,6 +12,7 @@ import kr.co.service.BoardService;
 import kr.co.vo.BoardVO;
 import kr.co.vo.Criteria;
 import kr.co.vo.PageMaker;
+import kr.co.vo.SearchCriteria;
 
 @Controller
 @RequestMapping("/board/*")
@@ -42,7 +44,7 @@ public class BoardController {
 //		
 //		return "board/list";
 //	}
-	
+/**	
 	@GetMapping("list")
 	public String list(Model model , Criteria cri) throws Exception{
 		
@@ -54,6 +56,23 @@ public class BoardController {
 		model.addAttribute("pageMaker",pageMaker);
 		
 		return "board/list";
+	}
+**/
+	
+	@GetMapping("/list")
+	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		
+		
+		model.addAttribute("list", service.list(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "board/list";
+		
 	}
 	
 	

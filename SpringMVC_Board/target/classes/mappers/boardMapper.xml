@@ -19,7 +19,7 @@
    
    </select>  -->
    
-  <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.Criteria">
+ <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.SearchCriteria">
 		SELECT  BNO, 
 		        TITLE, 
 		        CONTENT,
@@ -32,9 +32,9 @@
 		               WRITER, 
 		               REGDATE, 
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
-		         FROM MP_BOARD 
-		         
-		         where 1=1 <include refid="search"></include>
+		         FROM MP_BOARD
+		         WHERE 1=1 
+		         	<include refid="search"></include>
 		                       ) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY BNO DESC
@@ -56,22 +56,20 @@
    		delete from mp_board where bno = #{bno}
    </delete>
    
-   <select id="listCount"  parameterType="kr.co.vo.SearchCriteria"  resultType="int">
-   		
-   		select count(bno) 
-   		 	from mp_board
-   		 	where 1=1
-   		 	<include refid="search"></include>
-   		 	AND bno > 0
-   </select>
+  <select id="listCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">
+		SELECT COUNT(BNO)
+		   FROM MP_BOARD
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND BNO > 0
+	</select>
 	
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 't'.toString()" >AND title LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'c'.toString()" >AND content LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()" >AND writer LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()" >AND (title LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%') </if>
-			
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 

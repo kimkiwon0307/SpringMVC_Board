@@ -3,7 +3,7 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
+import kr.co.vo.SearchCriteria;
 
 public interface BoardService {
 	
@@ -14,10 +14,14 @@ public interface BoardService {
 	//리스트
 //	public List<BoardVO> list() throws Exception;
 	
-	public List<BoardVO> list(Criteria cri) throws Exception;
+//	public List<BoardVO> list(Criteria cri) throws Exception;
+	
+	public List<BoardVO> list(SearchCriteria scri) throws Exception;
 	
 	//갯수
-	public int listCount() throws Exception;
+//	public int listCount() throws Exception;
+	
+	public int listCount(SearchCriteria scri) throws Exception;
 	
 	//조회
 	public BoardVO read(int bno) throws Exception;

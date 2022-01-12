@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
+import kr.co.vo.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -32,12 +32,12 @@ public class BoardDAOImpl implements BoardDAO{
 //	}
 //
 
-
-	@Override
-	public List<BoardVO> list(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSesssion.selectList("boardMapper.listPage", cri);
-	}
+//
+//	@Override
+//	public List<BoardVO> list(Criteria cri) throws Exception {
+//		// TODO Auto-generated method stub
+//		return sqlSesssion.selectList("boardMapper.listPage", cri);
+//	}
 
 
 	
@@ -67,10 +67,24 @@ public class BoardDAOImpl implements BoardDAO{
 
 
 
+//	@Override
+//	public int listCount() throws Exception {
+//		// TODO Auto-generated method stub
+//		return sqlSesssion.selectOne("boardMapper.listCount");
+//	}
+
+
+
 	@Override
-	public int listCount() throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSesssion.selectOne("boardMapper.listCount");
+	public List<BoardVO> list(SearchCriteria scri) throws Exception {
+		return sqlSesssion.selectList("boardMapper.listPage", scri);
+	}
+
+
+
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception {
+		return sqlSesssion.selectOne("boardMapper.listCount", scri);
 	}
 
 }
