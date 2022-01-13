@@ -12,10 +12,12 @@ public interface BoardDAO {
 	public void write(BoardVO boardVO) throws Exception;
 	
 	//목록
-//	public List<BoardVO> list() throws Exception;
+/**
+	public List<BoardVO> list() throws Exception;
 	
-//	public List<BoardVO> list(Criteria cri) throws Exception;
-
+	public List<BoardVO> list(Criteria cri) throws Exception;
+*/
+	
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
 	
 	//갯수
