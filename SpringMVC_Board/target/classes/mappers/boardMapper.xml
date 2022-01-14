@@ -5,12 +5,8 @@
 <mapper namespace="boardMapper">
    
    <insert id="insert">
-   
-   	insert 
-   	into mp_board( bno, title, content, writer)
-   	values(mp_board_seq.nextval, #{title}, #{content}, #{writer}) 
-   
-   
+   	insert into mp_board( bno, title, content, writer)
+    values(mp_board_seq.nextval, #{title}, #{content}, #{writer}) 
    </insert>
    
 <!--    <select id="list" resultType="kr.co.vo.BoardVO">

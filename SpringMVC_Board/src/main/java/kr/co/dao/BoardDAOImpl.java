@@ -16,7 +16,7 @@ public class BoardDAOImpl implements BoardDAO{
 	private SqlSession sqlSesssion;
 	
 	
-	
+	// 작성
 	@Override
 	public void write(BoardVO boardVO) throws Exception {
 

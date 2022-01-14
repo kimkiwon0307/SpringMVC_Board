@@ -1,5 +1,7 @@
 package kr.co.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.service.BoardService;
+import kr.co.service.ReplyService;
 import kr.co.vo.BoardVO;
 import kr.co.vo.PageMaker;
+import kr.co.vo.ReplyVO;
 import kr.co.vo.SearchCriteria;
 
 @Controller
@@ -20,6 +24,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService service;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	
 	@GetMapping("writeView")
@@ -82,6 +89,10 @@ public class BoardController {
 		
 		model.addAttribute("scri", scri);
 		model.addAttribute("read", service.read(boardVO.getBno()));
+		
+		List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
+		model.addAttribute("replyList", replyList);
+		
 		
 		return "board/readView";
 	}
