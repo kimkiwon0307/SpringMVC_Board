@@ -90,28 +90,22 @@
 			var formObj = $("form[name='writeForm']");
 			   
 			if(fn_valiChk()){
-					
 					return false;
 				}
-				
+			
 				formObj.attr("action", "/board/write");
 				formObj.attr("method", "post");
 				formObj.submit();
 			});
 		})
-	
-	    	function fn_valiChk(){
-			
+	    
+		function fn_valiChk(){
 			for(var i = 0; i < 3; i++){
-				
 				if( $(".chk").eq(i).val() == ''){
-					
 					alert($(".chk").eq(i).attr("title"));
-					
 					return true;
 				} 
 			}
-		
 		}
 	</script>
 	</body>

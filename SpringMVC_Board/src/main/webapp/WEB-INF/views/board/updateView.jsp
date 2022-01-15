@@ -20,9 +20,7 @@
 			
 			$(".update_btn").on("click",function(){
 				if(fn_valiChk()){
-					
 					return false;
-					
 				}	
 				formObj.attr("action","/board/update");
 				formObj.attr("method","post");
@@ -31,8 +29,6 @@
 		})
 		
 		function fn_valiChk(){
-			
-			
 			for(var i = 0; i < 2; i++){
 				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
 					alert($(".chk").eq(i).attr("title"));
@@ -40,9 +36,11 @@
 				}
 			}
 		}
-		
-	
 	</script>
+	
+	
+	
+	
 	<body>
 	
 		<div id="root">

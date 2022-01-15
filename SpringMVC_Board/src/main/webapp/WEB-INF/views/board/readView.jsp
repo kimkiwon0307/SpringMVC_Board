@@ -26,13 +26,10 @@
 				var deleteYN = confirm("삭제?");
 				
 				if(deleteYN == true){
-					
 					formObj.attr("action", "/board/delete");
 					formObj.attr("method", "post");
 					formObj.submit();
-					
 				}
-				
 			})
 			
 			// 취소

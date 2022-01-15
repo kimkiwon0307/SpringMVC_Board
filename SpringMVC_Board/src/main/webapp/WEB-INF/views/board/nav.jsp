@@ -7,6 +7,7 @@
     		<a href="/board/writeView">글 작성</a>
     	
     	</div>
-    	
-    
     </div>
+    
+    
+    

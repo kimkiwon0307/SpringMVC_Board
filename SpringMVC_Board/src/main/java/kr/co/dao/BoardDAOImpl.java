@@ -12,6 +12,9 @@ import kr.co.vo.SearchCriteria;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
 
+	
+
+	
 	@Autowired 
 	private SqlSession sqlSesssion;
 	
@@ -32,13 +35,19 @@ public class BoardDAOImpl implements BoardDAO{
 //	}
 //
 
-//
-//	@Override
-//	public List<BoardVO> list(Criteria cri) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSesssion.selectList("boardMapper.listPage", cri);
-//	}
-
+/**
+	@Override
+	public List<BoardVO> list(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSesssion.selectList("boardMapper.listPage", cri);
+	}
+	
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSesssion.selectOne("boardMapper.listCount");
+	}
+*/
 
 	
 	
@@ -57,8 +66,6 @@ public class BoardDAOImpl implements BoardDAO{
 		
 	}
 
-
-
 	@Override
 	public void delete(int bno) throws Exception {
 
@@ -66,12 +73,6 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 
-
-//	@Override
-//	public int listCount() throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSesssion.selectOne("boardMapper.listCount");
-//	}
 
 
 

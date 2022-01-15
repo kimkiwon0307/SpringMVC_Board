@@ -13,13 +13,14 @@ public interface BoardService {
 	
 	//리스트
 //	public List<BoardVO> list() throws Exception;
-	
-//	public List<BoardVO> list(Criteria cri) throws Exception;
-	
+	/**
+	public List<BoardVO> list(Criteria cri) throws Exception;
+	public int listCount() throws Exception;
+	*/
+
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
 	
 	//갯수
-//	public int listCount() throws Exception;
 	
 	public int listCount(SearchCriteria scri) throws Exception;
 	
@@ -31,4 +32,7 @@ public interface BoardService {
 	
 	//삭제
 	public void delete(int bno) throws Exception;
+	
+	
+	
  }

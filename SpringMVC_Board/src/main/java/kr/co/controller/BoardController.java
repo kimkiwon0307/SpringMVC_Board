@@ -43,15 +43,16 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-//	@GetMapping("list")
-//	public String list(Model model) throws Exception{
-//		
-//		model.addAttribute("list", service.list());
-//		
-//		
-//		return "board/list";
-//	}
 /**	
+	@GetMapping("list")
+	public String list(Model model) throws Exception{
+		
+		model.addAttribute("list", service.list());
+
+		return "board/list";
+	}
+	
+	
 	@GetMapping("list")
 	public String list(Model model , Criteria cri) throws Exception{
 		
@@ -64,7 +65,9 @@ public class BoardController {
 		
 		return "board/list";
 	}
-**/
+
+	*/
+	
 	
 	@GetMapping("/list")
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
@@ -96,6 +99,16 @@ public class BoardController {
 		
 		return "board/readView";
 	}
+	
+	@GetMapping("readView")
+	public String read(BoardVO boardVO, Model model)throws Exception {
+		
+		model.addAttribute("read", service.read(boardVO.getBno()));
+		
+		return "board/readView";
+	}
+	
+	
 	
 	@GetMapping("updateView")
 	public String updateView(BoardVO boardVO, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
@@ -131,5 +144,6 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
 	
 }

@@ -7,19 +7,21 @@ import kr.co.vo.Criteria;
 import kr.co.vo.SearchCriteria;
 
 public interface BoardDAO {
-	
+
 	//입력
 	public void write(BoardVO boardVO) throws Exception;
 	
 	//목록
 /**
 	public List<BoardVO> list() throws Exception;
-	
+		//목록 조회
 	public List<BoardVO> list(Criteria cri) throws Exception;
+	
 */
 	
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
 	
+
 	//갯수
 //	public int listCount() throws Exception;
 	

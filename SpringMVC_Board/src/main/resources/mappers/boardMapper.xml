@@ -14,8 +14,10 @@
    	select * from mp_board order by bno desc
    
    </select>  -->
+
    
  <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.SearchCriteria">
+		
 		SELECT  BNO, 
 		        TITLE, 
 		        CONTENT,
@@ -35,12 +37,13 @@
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY BNO DESC
 	</select>
-   
+
    <select id="read" resultType="kr.co.vo.BoardVO" parameterType="int" >
    		
    		select * from mp_board where bno = #{bno} 
    
    </select>
+   
    
    <update id="update" parameterType="kr.co.vo.BoardVO">
    	  
@@ -68,6 +71,12 @@
 			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
+	
+
+	
+	
+	
+	
 
    
 </mapper>
