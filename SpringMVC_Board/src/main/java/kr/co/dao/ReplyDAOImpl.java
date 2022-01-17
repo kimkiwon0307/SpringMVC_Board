@@ -28,6 +28,26 @@ public class ReplyDAOImpl implements ReplyDAO{
 		sql.insert("replyMapper.writeReply",vo);
 		
 	}
+
+
+	@Override
+	public void updateReply(ReplyVO vo) throws Exception {
+
+		sql.update("replyMapper.updateReply", vo);
+	}
+
+
+	@Override
+	public void deleteReply(ReplyVO vo) throws Exception {
+		
+		sql.delete("replyMapper.deleteReply", vo);
+	}
+
+
+	@Override
+	public ReplyVO selectReply(int rno) throws Exception {
+		return sql.selectOne("replyMapper.selectReply", rno);
+	}
 		
 
 
