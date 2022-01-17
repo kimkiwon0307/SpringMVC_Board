@@ -56,6 +56,7 @@
 			
 			<section id="container">
 				<form name="writeForm" method="post" action="/board/write" >
+				 <c:if test="${member.userId != null}">
 					<div class="form-group">
 						<label for="title" class="col-sm-2 control-label">제목</label>
 						<input type="text" id="title" name="title" class="chk" title="제목을 입력하세요."/>
@@ -71,13 +72,17 @@
 					</div>
 						
 						<button type="submit" class="write_btn btn btn-primary">작성</button>
+				 </c:if>
+				 <c:if test="${member.userId == null }">
+				 	<p>로그인 후에 작성가능</p>
+				 </c:if>
 							
 				</form>
 			</section>
 			<hr />
 		</div>
 
-<script type="text/javascript">
+<script>
 		
 		$(document).ready(function(){
 			
