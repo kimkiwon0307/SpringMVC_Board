@@ -20,6 +20,14 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public List<ReplyVO> readReply(int bno) throws Exception {
 		return sql.selectList("replyMapper.readReply", bno);
 	}
+
+
+	@Override
+	public void writeReply(ReplyVO vo) throws Exception {
+	
+		sql.insert("replyMapper.writeReply",vo);
+		
+	}
 		
 
 

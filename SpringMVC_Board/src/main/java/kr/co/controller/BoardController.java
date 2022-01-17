@@ -100,13 +100,6 @@ public class BoardController {
 		return "board/readView";
 	}
 	
-	@GetMapping("readView")
-	public String read(BoardVO boardVO, Model model)throws Exception {
-		
-		model.addAttribute("read", service.read(boardVO.getBno()));
-		
-		return "board/readView";
-	}
 	
 	
 	
@@ -143,6 +136,21 @@ public class BoardController {
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
 		return "redirect:/board/list";
+	}
+	
+	
+	@PostMapping
+	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+		
+		replyService.writeReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/board/readView";
 	}
 	
 	

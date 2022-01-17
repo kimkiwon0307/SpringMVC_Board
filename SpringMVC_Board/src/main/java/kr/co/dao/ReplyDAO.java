@@ -10,5 +10,7 @@ public interface ReplyDAO {
 	public List<ReplyVO> readReply(int bno) throws Exception;
 	
 	
+	//댓글 작성
+	public void writeReply(ReplyVO vo) throws Exception;
 
 }

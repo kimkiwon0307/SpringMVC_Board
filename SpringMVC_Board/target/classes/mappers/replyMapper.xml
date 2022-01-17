@@ -13,6 +13,10 @@
   
   </select>
   
-  
+  <!-- 댓글 작성 -->
+  <insert id="writeReply">
+  	insert into mp_reply( bno, rno, content, writer)
+  	values (#{bno}, MP_reply_seq.nextval, #{content}, #{writer})
+  </insert> 
   
 </mapper>
