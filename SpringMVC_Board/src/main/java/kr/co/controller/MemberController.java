@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
+	
 	
 	//get 회원가입
 	@GetMapping("/register")
@@ -37,6 +41,11 @@ public class MemberController {
 			if(service.idChk(vo) == 1) {
 				return "/member/register";
 			}else if(service.idChk(vo) == 0) {
+				
+				String inputPass = vo.getUserPass();
+				String pwd = pwdEncoder.encode(inputPass);
+				vo.setUserPass(pwd);
+				
 				service.register(vo);
 			}
 		} catch (Exception e) {
@@ -46,18 +55,22 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		
-		HttpSession session = req.getSession();
+		session.getAttribute("member");
+		
 		MemberVO login = service.login(vo);
 		
-		if(login == null) {
+		boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
+		
+		if(login != null && pwdMatch == true) {
 			
+			session.setAttribute("member", login);
+		}else {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg",false);
-		}else {
-			session.setAttribute("member", login);
 		}
+	
 		return "redirect:/";
 	}
 
@@ -91,7 +104,7 @@ public class MemberController {
 	
 	@PostMapping("/memberDelete")
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr)throws Exception{
-		
+		/**
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		
 		String sessionPass = member.getUserPass();
@@ -103,18 +116,22 @@ public class MemberController {
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/memberDeleteView";
 		}
-		
+		*/
 		service.memberDelte(vo);
 		session.invalidate();
+		
 		return "redirect:/";
 	}
 	
 	//패스워드 체크
 	@ResponseBody
 	@PostMapping("/passChk")
-	public int passChk(MemberVO vo) throws Exception{
+	public boolean passChk(MemberVO vo) throws Exception{
 		
-		return service.passChk(vo);
+		MemberVO login = service.login(vo);
+		boolean pwdChk = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
+		
+		return pwdChk;
 		
 	}
 	
