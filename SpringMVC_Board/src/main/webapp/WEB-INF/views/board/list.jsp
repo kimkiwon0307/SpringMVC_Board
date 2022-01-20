@@ -36,7 +36,6 @@
 						<th>등록일</th>
 					</tr>
 
-
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td><c:out value="${list.bno}" /></td>
@@ -97,6 +96,7 @@
 			</section>
 			<hr />
 		</div>
+	
 		<script>
 			$(function() {
 				$('#searchBtn').click(function() {
