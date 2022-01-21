@@ -31,8 +31,7 @@ public class BoardController {
 	
 	@GetMapping("writeView")
 	public void writeView() throws Exception{
-		
-		
+	
 	}
 	
 	@PostMapping("write")
