@@ -48,6 +48,9 @@ public class BoardController {
 		
 		model.addAttribute("list", service.list());
 
+
+
+
 		return "board/list";
 	}
 	
