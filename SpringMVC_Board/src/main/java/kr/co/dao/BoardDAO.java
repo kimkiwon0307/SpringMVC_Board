@@ -13,9 +13,14 @@ public interface BoardDAO {
 	
 	//목록
 /**
+	목록의 변화 과정
+		
 	public List<BoardVO> list() throws Exception;
 		//목록 조회
 	public List<BoardVO> list(Criteria cri) throws Exception;
+	
+ 
+	
 	
 */
 	
