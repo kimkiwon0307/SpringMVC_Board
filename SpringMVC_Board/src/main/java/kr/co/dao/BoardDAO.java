@@ -19,8 +19,6 @@ public interface BoardDAO {
 		//목록 조회
 	public List<BoardVO> list(Criteria cri) throws Exception;
 	
- 
-	
 	
 */
 	
