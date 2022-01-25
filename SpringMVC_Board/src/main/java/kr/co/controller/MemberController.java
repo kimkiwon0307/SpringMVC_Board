@@ -31,7 +31,7 @@ public class MemberController {
 	public void getRegister() throws Exception{
 	}
 	
-	//post 회원가입
+	//post 회원가입 이다
 	@PostMapping("/register")
 	public String postRegister(MemberVO vo) throws Exception{
 		
