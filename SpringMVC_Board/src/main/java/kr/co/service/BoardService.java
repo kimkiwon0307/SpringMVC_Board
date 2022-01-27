@@ -11,9 +11,9 @@ public interface BoardService {
 	//작성
 	public void write (BoardVO boardVO) throws Exception;
 	
-	//리스트
-//	public List<BoardVO> list() throws Exception;
 	/**
+	//리스트
+	public List<BoardVO> list() throws Exception;
 	public List<BoardVO> list(Criteria cri) throws Exception;
 	public int listCount() throws Exception;
 	*/
