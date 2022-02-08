@@ -42,8 +42,6 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-
-	
 	@GetMapping("/list")
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		
