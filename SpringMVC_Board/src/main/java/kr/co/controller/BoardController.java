@@ -33,6 +33,7 @@ public class BoardController {
 	public void writeView() throws Exception{
 	
 	}
+	 
 	
 	@PostMapping("write")
 	public String write(BoardVO boardVO)throws Exception{
