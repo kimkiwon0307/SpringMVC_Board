@@ -165,6 +165,7 @@ public class BoardController {
 		return "board/replyDeleteView";
 	}
 	
+	
 	//댓글 삭제
 	@PostMapping("/replyDelete")
 	public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
